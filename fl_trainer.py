@@ -928,7 +928,7 @@ class FixedPoolFederatedLearningTrainer(FederatedLearningTrainer):
                 noise_adder.exec(client_model=self.net_avg,
                                                 device=self.device)
 
-            calc_norm_diff(gs_model=self.net_avg, vanilla_model=self.net_avg, epoch=0, fl_round=flr, mode="avg")
+            calc_norm_diff(gs_model=self.net_avg, vanilla_model=self.vanilla_model, epoch=0, fl_round=flr, mode="avg")
             
             logger.info("Measuring the accuracy of the averaged global model, FL round: {} ...".format(flr))
             #overall_acc = test(self.net_avg, self.device, self.vanilla_emnist_test_loader, test_batch_size=self.test_batch_size, criterion=self.criterion, mode="raw-task", dataset=self.dataset, poison_type=self.poison_type)
